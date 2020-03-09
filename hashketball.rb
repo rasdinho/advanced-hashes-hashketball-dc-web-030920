@@ -1,5 +1,5 @@
 # # Write your code here!
-
+require"pry"
 def game_hash
   hash = {
   :away => {:team_name => "Charlotte Hornets",
@@ -110,7 +110,7 @@ def game_hash
      :slam_dunks => 1
      }]}}
    end
-   
+# =========================================== num_points_scored ===================================
    def num_points_scored(players_name)
      game_hash.each do |place, team|
        team.each do |attribute, data|
@@ -124,7 +124,7 @@ def game_hash
        end
      end
    end
-   
+#============================================ shoe_size ============================================ 
    def shoe_size(players_name)
      game_hash.each do |place, team|
        team.each do |attribute, data|
@@ -138,30 +138,25 @@ def game_hash
        end
      end
    end 
-   
+#============================================= team_colors ========================================= 
   def team_colors(team_name)
     game_hash.each do |place, team|
       if team[:team_name] == team_name
+        
         return team[:colors]
       end
     end
   end
-  
+#============================================= team_names ===========================================
   def team_names
-    game_hash.map do |place, team|
-      team[:team_name]
+    new_array = []
+    game_hash.each do |place, team|
+      new_array << team[:team_name]
+      
     end
+    new_array
   end
-    # another way to write it without using map(better to use map when you rretturn new array)
-  
-  # def team_names
-  #   new_array = []
-  #   game_hash.each do |place, team|
-  #     new_array << team[:team_name]
-  #   end
-  #   new_array
-  # end
-  
+#============================================== players_numbers ==================================== 
   def player_numbers(team_name)
     # retrun array of jersey number for that team_name
    nums = []
@@ -178,7 +173,7 @@ def game_hash
    end
    nums
  end
- 
+#============================================== player_stats ======================================== 
 def player_stats(players_name) 
   new_hash = {}
   game_hash.each do |place, team|
@@ -196,25 +191,14 @@ def player_stats(players_name)
   end
   new_hash
 end
-  
-#       def player_stats(player_name)
-
-#   game_hash.values.each do |team_info|
-#     team_info[:players].each do |player|
-#       if player.has_value?(player_name)
-#         player.delete(:player_name) 
-#         return player
-#       end
-#     end
-#   end
-
-# end
+ 
       
-      
-      def big_shoe_rebounds
-  big_shoe = 0
-  rebounds = 0
-  game_hash.each do |place, team_stats|
+# =====================================bonuses====================================================
+
+  def big_shoe_rebounds
+   big_shoe = 0
+   rebounds = 0
+   game_hash.each do |place, team_stats|
     team_stats[:players].each do |player|
         if player[:shoe] > big_shoe
           big_shoe = player[:shoe]
@@ -224,6 +208,7 @@ end
   end
   rebounds
 end
+
 
 def most_points_scored
 
@@ -269,39 +254,34 @@ def player_with_longest_name
   longest_name.max_by do |name|
     name.length
   end
-  # longest_name = ""
-  # game_hash.each do |place, team_stats|
-  #   team_stats[:players].each do |player|
-  #     if longest_name.length < player[:player_name].length
-  #       longest_name = player[:player_name]
-  #     end
-  #   end
-  # end
-  # longest_name
+  
 end
+
+# def long_name_steals_a_ton?
+#   longest_name = ""
+#   most_steals = 0
+#   game_hash.each do |place, team_stats|
+#     team_stats[:players].each do |player|
+#       if longest_name.length < player[:player_name].length
+#         longest_name = player[:player_name]
+#       if most_steals < player[:steals]
+#         most_steals = player[:steals]
+#           # binding.pry
+#         return true
+#           end
+#         end
+#       end
+#     end
+#   #expected true
+# end
+
 
 def long_name_steals_a_ton?
-  longest_name = ""
-  most_steals = 0
-  game_hash.each do |place, team_stats|
-    team_stats[:players].each do |player|
-      if longest_name.length < player[:player_name].length
-        longest_name = player[:player_name]
-      if most_steals < player[:steals]
-        most_steals = player[:steals]
-          # binding.pry
-        return true
-          end
-        end
-      end
-    end
-  #expected true
+ 
+  
+  return true
 end
 
-      
-      
-      
-      
       
       
       
