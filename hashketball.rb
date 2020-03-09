@@ -173,6 +173,16 @@ def game_hash
    end
    nums
  end
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 #============================================== player_stats ======================================== 
 def player_stats(players_name) 
   new_hash = {}
